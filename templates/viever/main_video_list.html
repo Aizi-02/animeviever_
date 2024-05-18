@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+ 
+
+
+<div class="arrow-8"></div>
+
+
+
+<div class="container">
+
+  {% for anime in anime_list %}
+  <a href="{% url 'anime_detail' anime.name %}" >
+    <div class="cta">
+      
+      <img src="{{ anime.image_url }}" alt="{{ anime.name }}">
+      <div class="text">
+          <h2>{{ anime.name }}</h2>
+          <p>{{anime.description}}</p>
+      </div>
+    </div>
+  </a>
+  {% endfor %}
+
+</div>
+
+
+
+
+ 
+
+
+              
+          
+      
+    
+    
+  
+  
+  
+  
+  
+  <div class="arrow-9" style="margin-top: 20%;"></div>
+{% endblock %}
+

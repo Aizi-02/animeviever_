@@ -1,0 +1,175 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+    <div class="container">
+        <h1 style="color: white; margin: 5%;margin-top: 10%;">{{name}}</h1>
+        <table class="table">
+            
+            <tbody>
+
+                
+                    <div>
+                       
+                        
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <div>
+                                <iframe src="animeviever/viever/player/playerjs.html?file={{video.url}}" type="text/html" width=500 height=200 frameborder="0" allowfullscreen></iframe>
+                              </div>
+                            
+                            
+                            
+
+                            
+                        </div>
+                        <div >
+                            <div class="button-container">
+                                
+                                       
+                                        <button id="button_left" class="btn btns  position-relative col-sm-pull-xx" ></button>
+                                        <button id="button_right"  class="btn btns right position-relative col-sm-push-xx" ></button>
+                                  
+                            </div>
+                        </div>
+                        <div >
+                            <div class="button-container">
+                                
+                                    <a href="{% url 'anime_detail' name %}">
+                                        <button  class="btn btns  position-relative col-sm-pull-xx" >Список всех серий</button>
+                                    </a>
+                                  
+                            </div>
+                        </div>
+                    </div>
+                
+            </tbody>
+        </table>
+    </div>
+
+
+
+    <script src="../jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="../script.js"></script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        
+        if ({{now_season}} == 1){
+            if ({{now_series}} == 1){
+                    document.getElementById('button_left').style.visibility = 'hidden';
+                }
+            else{
+                document.getElementById('button_left').style.visibility = 'visible';
+                document.getElementById('button_left').innerHTML = "Серия "+({{now_series}}-1);
+            }
+            
+        }
+        else{
+            if ({{now_series}} == 1){
+                document.getElementById('button_left').innerHTML = "Сезон "+({{now_season}}-1)+" Серия "+({{last_series}}+1);
+            }
+            else{
+                document.getElementById('button_left').innerHTML = " Серия "+({{now_series}}-1);
+            }
+        }
+        
+        if ({{now_season}} == {{max_seasons}}){
+            if ({{now_series}} == {{max_series}} ){
+                
+                document.getElementById('button_right').style.visibility = 'hidden';
+            }
+            else{
+
+                document.getElementById('button_right').style.visibility = 'visible';
+                document.getElementById('button_right').innerHTML = "Серия "+({{now_series}}+1);
+            }
+        }
+        else{
+            if ({{now_series}} == {{max_series}}){
+                document.getElementById('button_right').innerHTML = "Сезон "+({{now_season}}+1)+" Серия "+(1);
+            }
+            else{
+                document.getElementById('button_right').innerHTML = " Серия "+({{now_series}}+1);
+            }
+        }
+        
+        
+        
+    </script>
+    <script>
+        
+
+
+
+
+        $(document).ready(function() {
+            
+            
+                
+                $('#button_left').click(function() {
+                 // индекс страницы
+                    if (({{now_series}} == 1) && ({{now_season}} != 1)){
+                        $.ajax({
+                            
+                            url: '/viever/anime/' + "{{name}}" + '/'+ ({{now_season}}-1) + '/'+ ({{last_series}}) + '/',
+                            success: function(data) {
+                                $('body').html(data);
+                            }
+                        });
+                        history.pushState(null, null, '/viever/anime/' + "{{name}}" + '/'+ ({{now_season}}-1) + '/'+ ({{last_series}}) + '/');
+                    }
+                    else{
+                        $.ajax({
+                            
+                            url: '/viever/anime/' + "{{name}}" + '/'+ ({{now_season}}) + '/'+ ({{now_series}}-1) + '/',
+                            success: function(data) {
+                                $('body').html(data);
+                            }
+                        });
+                        history.pushState(null, null,'/viever/anime/' + "{{name}}" + '/'+ ({{now_season}}) + '/'+ ({{now_series}}-1) + '/');
+                    }
+
+                });
+            
+            
+        });
+       
+        $(document).ready(function() {
+            
+            
+                
+                $('#button_right').click(function() {
+                 // индекс страницы
+                 if (({{now_series}} == {{max_series}}) && ({{now_season}} != {{max_seasons}})){
+                        $.ajax({
+                            
+                            url: '/viever/anime/' + "{{name}}" + '/'+ ({{now_season}}+1) + '/'+ (1) + '/',
+                            success: function(data) {
+                                $('body').html(data);
+                            }
+                        });
+                        history.pushState(null, null,'/viever/anime/' + "{{name}}" + '/'+ ({{now_season}}+1) + '/'+ (1) + '/');
+                    }
+                    else{
+                        $.ajax({
+                            
+                            url: '/viever/anime/' + "{{name}}" + '/'+ ({{now_season}}) + '/'+ ({{now_series}}+1) + '/',
+                            success: function(data) {
+                                $('body').html(data);
+                            }
+                        });
+                        history.pushState(null, null,'/viever/anime/' + "{{name}}" + '/'+ ({{now_season}}) + '/'+ ({{now_series}}+1) + '/');
+                    }
+            });
+            
+            
+        });
+    </script>
+    
+
+
+{% endblock %}
+

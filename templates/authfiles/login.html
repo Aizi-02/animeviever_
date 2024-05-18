@@ -1,0 +1,22 @@
+
+<div id="login" class="modal fade" role="dialog" >
+  <div class="modal-dialog">
+    
+    <div class="modal-content">
+      <div class="modal-body">
+        <button data-dismiss="modal" class="close">&times;</button>
+        <h4 class = "h4s">Вход</h4>
+        
+          <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            <input type="text" name="username" class="username form-control" placeholder="Username"/>
+            <input type="password" name="password" class="password form-control" placeholder="password"/>
+            <input class="btn login" type="submit" value="Войти" />
+          </form>
+          
+          <a class="btn login" id = "reg-triger" href="#" data-dismiss="modal" data-target="#registrate" data-toggle="modal" >Регистрация</a>
+        
+      </div>
+    </div>
+  </div>  
+</div>

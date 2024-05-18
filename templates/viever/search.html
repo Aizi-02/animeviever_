@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  
+  <div class="search-container">
+    <ul>
+      <div id="search-results" class="search-results"></div>
+      {% for anime in anime_list %}
+        <li>{{ anime.name }}</li>
+      {% endfor %}
+    </ul>
+    <input id="search-input" type="text" placeholder="Поиск по названию">
+    
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('#search-input').keyup(function() {
+        var query = $(this).val();
+        if (query.length > 0) {
+          $.ajax({
+            url: "{% url 'search' %}",
+            method: 'GET',
+            data: { query: query },
+            success: function(data) {
+
+              $('#search-results').html(data);
+              
+            }
+          });
+        } else {
+          $('#search-results').empty();
+        }
+      });
+    });
+  </script>
+{% endblock %}

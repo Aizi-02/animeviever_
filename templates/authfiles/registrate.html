@@ -1,0 +1,32 @@
+
+
+<div id="registrate" class="modal fade" role="dialog" data-dismiss="modal">
+  <div class="modal-dialog">
+    
+    <div class="modal-content">
+      <div class="modal-body">
+        <button data-dismiss="modal" class="close">&times;</button>
+        <h4 class = "h4s">Регистрация</h4>
+        
+          <form method="post" action="{% url 'register' %}">
+            {% csrf_token %}  
+            
+            <input type="text" name="username" class="username form-control" placeholder="Username"/>
+            <input type="text" name="email" class="username form-control" placeholder="Email"/>
+            <input type="password" name="password1" class="password form-control" placeholder="Password"/>
+            
+            <input class="btn login" type="submit" value="Зарегистрироваться" />
+          </form>
+          <a class="btn login" href="#" data-dismiss="modal" data-target="#login" data-toggle="modal" >Войти</a>
+          
+      </div>
+    </div>
+  </div>  
+</div>
+
+
+
+
+
+
+

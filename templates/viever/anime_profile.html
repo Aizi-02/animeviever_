@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="image-wrapper">
+          <img class="image-1" src="{{anime.image_url}}" />
+          <img class="image-2" src="{{anime.image_url}}" />
+          <img class="image-3" src="{{anime.image_url}}" />
+          <img class="image-4" src="{{anime.image_url}}" />
+        </div>
+      </div>
+      <div class="col-md-8" style = "color: #fff;">
+        <h1>{{ anime.name }}</h1>
+        {% if seasons|length != 0 %}
+
+          
+        
+            <p>Количество сезонов: {{ seasons|length }}</p>
+        {% endif %}
+        
+        <p>Жанры: {{genres}}</p>
+        <p>Дата выхода: {{ anime.date_time }}</p>
+        <p>Description: {{ anime.description }}</p>
+      </div>
+    </div>
+  </div>
+  
+
+   {% load index %}
+    <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&display=swap" rel="stylesheet"> 
+    <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+
+
+
+
+  <section class = "sections">
+    <div class="container-it">
+      <div class="accordion">
+        {% for season in seasons%}
+        <div class="accordion-item" id="question{{ forloop.counter }}">
+          <a class="accordion-link" href="#question{{ forloop.counter }}">
+            <div class="flex">
+              <h3>Сезон {{season.season_id}}</h3>
+              
+            </div>
+            <i class="icon ion-md-arrow-forward"></i>
+            <i class="icon ion-md-arrow-down"></i>
+          </a>
+          <div class="answer">
+            {% for series in series_list|index:forloop.counter %}
+                <a href="{% url 'video_list' anime.name series.season.season_id series.series_id %}" class="btn11 btn-56">Серия {{series.series_id}}</a> 
+            {% endfor %}
+          </div>
+          <hr>
+      </div>
+      {% endfor %}
+        
+     </div>
+    </div>
+  </section>
+        
+    
+  
+ 
+{% endblock %}

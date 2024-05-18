@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aniheart</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400&display=swap" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>aniheart</title>
+    <!-- MDB icon -->
+    <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon" />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <!-- Google Fonts Roboto -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
+    />
+    <!-- MDB -->
+    <link rel="stylesheet" href="/animeviever/static/css/mdb.min.css" />
+
+
+    <link rel="stylesheet" href="animeviever/static/css/base.css" />
+
+    
+
+
+<style>
+    .search-container {
+      position: relative;
+      width: 300px;
+      margin: 0 auto;
+    }
+  
+    #search-input {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      outline: none;
+      transition: box-shadow 0.3s ease-in-out;
+    }
+  
+    #search-input:focus {
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    }
+  
+    .search-results {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      max-height: 300px;
+      overflow: auto;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      z-index: 999;
+    }
+  
+    .search-results ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+  
+    .search-results li {
+      padding: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease-in-out;
+    }
+  
+    .search-results li:hover {
+      background-color: #f5f5f5;
+    }
+    .header_color{
+      
+      backdrop-filter: blur(25px);
+      background: linear-gradient(81.32deg,hsla(0, 0%, 0%, 0.05) 30%,hsla(0, 0%, 100%, 0) 100%);
+      height: 70px;
+      
+    }
+    .headers{
+      left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+
+    }
+
+    
+@media screen and (max-width: 600px) {
+        #no_view {
+        visibility: hidden;
+        display: none;
+        }
+        
+  
+}
+/* <span class="label label-warning pull-right r-activity">9</span>  поле предупреждений*/
+
+.lite {
+  font-size: 70px;
+  font-weight: 1000;
+  color: #fdfdfe;
+  text-shadow: 0px 0px 5px #b393d3, 0px 0px 10px #b393d3, 0px 0px 10px #b393d3,
+    0px 0px 20px #b393d3;
+  
+}
+.lite-small {
+  font-size: 20px;
+  font-weight: 600;
+  color: #fdfdfe;
+  text-shadow: 0px 0px 5px #b393d3, 0px 0px 10px #b393d3, 0px 0px 10px #b393d3,
+    0px 0px 20px #b393d3;
+}
+.heads{
+  margin-top: 6%;
+  margin-left: 16%;
+}
+
+#heart {
+            position:relative;
+            top: 25%;
+            left: 23%;
+            transform: translate(-50%, -50%);
+            width: 30%; /* Измените размеры на нужные */
+            height: 30%; /* Измените размеры на нужные */
+             /* Путь к изображению сердца */
+            background-repeat: no-repeat;
+            background-size: contain;
+            
+            animation: pulse 2s infinite;
+        }
+       
+        @keyframes pulse {
+            0% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.05);
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+        }
+
+        .arrow-8 {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin: 30px auto 80px auto;
+
+}
+.arrow-8:before,
+.arrow-8:after {
+    content: '';
+    position: absolute;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    
+
+    border-left: 26px solid #b393d3;
+    border-bottom: 26px solid #b393d3;
+    animation: arrow-8 3s linear infinite;
+}
+.arrow-8:after {
+    animation: arrow-8 3s linear infinite -1.5s;
+}
+@keyframes arrow-8 {
+    0% {
+        opacity: 0;
+        transform: translate(0, -30px) rotate(-45deg);
+    }
+    10%, 90% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;  
+        transform: translate(0, 0) rotate(-45deg);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(0, 30px) rotate(-45deg);
+    }
+}
+
+
+.arrow-9 {
+    margin-top: 20%;
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin: 30px auto 80px auto;
+
+}
+.arrow-9:before,
+.arrow-9:after {
+    content: '';
+    position: absolute;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    
+
+    border-right: 26px solid #b393d3;
+    border-top: 26px solid #b393d3;
+    animation: arrow-8 3s linear infinite;
+}
+.arrow-9:after {
+    animation: arrow-8 3s linear infinite -1.5s;
+}
+@keyframes arrow-9 {
+    0% {
+        opacity: 0;
+        transform: translate(0, -30px) rotate(-45deg);
+    }
+    10%, 90% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;  
+        transform: translate(0, 0) rotate(-45deg);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(0, 30px) rotate(-45deg);
+    }
+}
+.wrap {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button1 {
+  min-width: 300px;
+  min-height: 60px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 22px;
+  text-transform: uppercase;
+  letter-spacing: 1.3px;
+  font-weight: 700;
+  color: white;
+  background: #b393d3;
+background: linear-gradient(90deg, #b393d3 0%, #ad80d9 100%);
+  border: none;
+  border-radius: 1000px;
+  box-shadow: 12px 12px 24px #ad80d9;
+  transition: all 0.3s ease-in-out 0s;
+  cursor: pointer;
+  outline: none;
+  position: relative;
+  padding: 10px;
+  }
+
+  .button1::before {
+content: '';
+  border-radius: 1000px;
+  min-width: calc(300px + 12px);
+  min-height: calc(60px + 12px);
+  border: 6px solid #b393d3;
+  box-shadow: 0 0 60px #b393d3;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: all .3s ease-in-out 0s;
+}
+
+.button1:hover, .button1:focus {
+  color: #b393d3;
+  transform: translateY(-6px);
+}
+
+.button1:hover::before,.button1:focus::before {
+  opacity: 1;
+}
+
+.button1::after {
+  content: '';
+  width: 30px; height: 30px;
+  border-radius: 100%;
+  border: 6px solid #b393d3;
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: ring 1.5s infinite;
+}
+
+.button1:hover::after, .button1:focus::after {
+  animation: none;
+  display: none;
+}
+
+@keyframes ring {
+  0% {
+    width: 30px;
+    height: 30px;
+    opacity: 1;
+  }
+  100% {
+    width: 300px;
+    height: 300px;
+    opacity: 0;
+  }
+}
+
+/* video list */
+.button-container {
+      display: flex;
+      justify-content: center;
+    }
+    
+    .btns{
+       background-color:#b393d3 ; 
+       text-shadow: 0px 0px 5px #b393d3, 0px 0px 10px #b393d3, 0px 0px 10px #b393d3,
+    0px 0px 20px #b393d3;
+        margin-top: 20px;
+    }
+    .right{
+        margin-left:50%; 
+    }
+
+
+/* main */
+.container {
+      display: flex;
+      flex-wrap: wrap;
+      
+  }
+  .cta {
+      flex-basis: calc(20% - 20px); /* Измените значение на 25% для 4 столбцов и 33.33% для 3 столбцов */
+      margin: 10px;
+      padding: 10px;
+      border-radius: 4%;
+     
+      
+  }
+  .text {
+      margin-top: 10px;
+  }
+  @media (max-width: 1200px) {
+      .cta {
+          flex-basis: calc(25% - 20px); /* Измените значение на 33.33% для 3 столбцов */
+      }
+  }
+  @media (max-width: 992px) {
+      .cta {
+          flex-basis: calc(33.33% - 20px); /* Измените значение на 50% для 2 столбцов */
+      }
+  }
+  @media (max-width: 768px) {
+      .cta {
+          flex-basis: calc(50% - 20px); /* Измените значение на 100% для 1 столбца */
+      }
+  }
+
+
+
+    
+  .cta-background {
+  background-size: cover;
+  background-position: center center;
+  bottom: 0;
+  filter: blur(50px);
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+  z-index: -1;
+}
+
+.container {
+  align-items: center;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+}
+
+.cta {
+  background: #333;
+  box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.2);
+  height: 320px;
+  overflow: hidden;
+  position: relative;
+  width: 230px;
+}
+.cta:hover img {
+  top: -10%;
+  filter: brightness(70%);
+}
+.cta:hover .text {
+  bottom: 0;
+}
+.cta img {
+  bottom: 0;
+  filter: brightness(100%);
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: 0.5s ease-in-out;
+  width: 115%;
+}
+.cta .text {
+  bottom: -100%;
+  padding: 15px;
+  position: absolute;
+  transition: 0.5s ease-in-out;
+}
+.cta .text h2 {
+  color: #fff;
+  display: inline-block;
+  font-weight: 300;
+  margin-bottom: 5px;
+  position: relative;
+}
+.cta .text p {
+  color: #fff;
+  font-weight: 300;
+}
+
+/* profile */
+.sections {
+  width: 100%;
+  height: 100vh;
+  background-color: #301934;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container-it{
+  width: 100%;
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.accordion-item{
+  background-color: #301934;
+  border-radius: .4rem;
+}
+
+.accordion-item hr{
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.accordion-link{
+  font-size: 1.6rem;
+  color: rgba(255,255,255,.8);
+  text-decoration: none;
+  background-color: #301934;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+}
+
+.accordion-link h3{
+  font-weight:500;
+  font-size: 20px;
+}
+
+.accordion-link i{
+  color: #e7d5ff;
+  padding: .5rem;
+  
+}
+
+
+
+.accordion-link div{
+  display: flex;
+}
+
+.accordion-link .ion-md-arrow-down{
+  display: none;
+}
+
+.answer{
+  max-height: 0;
+  overflow: hidden;
+  position: relative;
+  background-color: #301934;
+  transition: max-height 650ms;
+}
+
+
+
+
+
+.accordion-item:target .answer{
+  max-height: 20rem;
+}
+
+.accordion-item:target .accordion-link .ion-md-arrow-forward{
+  display: none
+}
+
+.accordion-item:target .accordion-link .ion-md-arrow-down{
+  display: block;
+}
+
+
+.image-wrapper {
+  
+  width: 400px;
+  height: 600px;
+  position: relative;
+  margin-left:5vh;
+}
+
+.image-wrapper img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  max-width: 300px;
+  max-height: 400px;
+  transform-origin: left;
+}
+
+.image-1 {
+  clip-path: polygon(0 0, 0 32%, 28% 0);
+  transform: translate(-10px, -10px);
+  transition: transform 300ms ease;
+  transform-origin: top;
+  .image-wrapper:hover & {
+    transform: translate(0,0);
+  }
+}
+
+.image-2 {
+  clip-path: polygon(28% 0, 0 32%, 0 100%, 17% 100%, 90% 0);
+  transform: translate(-30px, 5px);
+  transition: transform 300ms ease;
+  .image-wrapper:hover & {
+    transform: translate(0,0);
+  }
+}
+
+.image-3 {
+  clip-path: polygon(100% 0, 100% 65%, 74% 100%, 17% 100%, 90% 0);
+  transform: translate(-15px, -10px);
+  transition: transform 300ms ease;
+  .image-wrapper:hover & {
+    transform: translate(0,0);
+  }
+}
+
+.image-4 {
+  clip-path: polygon(100% 65%, 74% 100%, 100% 100%);
+  transform: translate(-32px, 5px);
+  transition: transform 300ms ease;
+  transform-origin: top;
+  .image-wrapper:hover & {
+    transform: translate(0,0);
+  }
+}
+
+.btn11 {
+  text-align: center;
+  color: #fff;
+  cursor: pointer;
+
+  font-size:16px;
+  font-weight: 400;
+  line-height: 45px;
+  margin: 0 0 2em;
+  max-width: 160px; 
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+  width: 100%; 
+  
+    @media(min-width: 400px) {
+    display: inline-block;
+    margin-right: 2.5em;
+      
+    &:nth-of-type(even) {
+    margin-right: 0;
+      }
+      }
+  
+  @media(min-width: 600px) {
+      
+    margin: 0 1em 2em;
+  
+    &:nth-of-type(even) {
+    margin-right: 2.5em;
+    }
+        
+    &:nth-of-type(5) {
+    margin-right: 0;
+    }
+    
+  }
+  
+  &:hover { text-decoration: none; }
+  
+}
+
+
+.btn-56 {
+  border: 0 solid;
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0);
+  outline: 1px solid;
+  outline-color: rgba(255, 255, 255, .5);
+  outline-offset: 0px;
+  text-shadow: none;
+  transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
+} 
+
+.btn-56:hover {
+  border: 1px solid;
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, .5), 0 0 20px rgba(255, 255, 255, .2);
+  outline-color: rgba(255, 255, 255, 0);
+  outline-offset: 15px;
+  text-shadow: 1px 1px 2px #427388; 
+}
+
+
+  </style>
+  
+
+
+</head>
+
+
+<body style = "overflow-x: hidden;
+                ">
+
+<style>
+  
+details {
+  margin: 15px;
+}
+summary {
+  writing-mode: vertical-lr;
+  text-align: center;
+  padding: 12px 1px;
+  width: 23px;
+  height: 17px;
+  background-color: var(--w);
+  border: 2px solid var(--secoColor);
+  border-radius: var(--cornerRad);
+  color: white;
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+  transition: transform 200ms ease-in-out 0s;
+  font-size: 24px;
+}
+summary::before,
+summary::after {
+  position: static;
+  top: 0;
+  left: 0;
+}
+summary::before {
+  content: "";
+}
+summary::after {
+  content: "III";
+  letter-spacing: -1px;
+}
+summary:hover {
+  transform: scale(1.1);
+}
+summary::marker {
+  font-size: 0;
+}
+summary::-webkit-details-marker {
+  display: none;
+}
+details[open] .menu {
+  animation-name: menuAnim;
+}
+details[open] summary::before {
+  content: "X";
+}
+details[open] summary::after {
+  content: "";
+}
+.menu {
+  height: 0;
+  width: fit-content;
+  border-radius: var(--cornerRad);
+  background-color: var(--primColor);
+  box-shadow: 0 4px 12px 0 #b393d3;
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  animation: closeMenu 300ms ease-in-out forwards;
+}
+.menu a {
+  padding: 12px 24px;
+  margin: 20 16px;
+  color: white;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  text-align: center;
+  transition: filter 200ms linear 0s;
+}
+.menu a:nth-of-type(1) {
+  padding-top: 24px;
+}
+.menu a:nth-last-of-type(1) {
+  border-bottom: none;
+}
+.menu a:hover {
+  filter: brightness(200%);
+}
+
+details[open]::before {
+  animation: fadeMe 300ms linear forwards;
+}
+@keyframes menuAnim {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 312px;
+  }
+}
+@keyframes fadeMe {
+  0% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+body{
+  background-color: #301934 !important;
+}
+</style>
+<style>
+  
+/*Modal*/
+
+
+
+/*Modal*/
+.h4s {
+  font-weight: bold;
+  color: #fff;
+}
+.close {
+  color: #fff;
+  transform: scale(1.2)
+}
+.modal-content {
+  font-weight: bold;
+  background: linear-gradient(to bottom right,#b393d3,#301934);
+}
+.form-control {
+  margin: 1em 0;
+}
+.form-control:hover, .form-control:focus {
+  box-shadow: none;  
+  border-color: #fff;
+}
+.username, .password {
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  border-bottom: 2px solid #eee;
+  padding-left: 0;
+  font-weight: normal;
+  background: transparent;  
+}
+.form-control::-webkit-input-placeholder {
+  color: #eee;  
+}
+.form-control:focus::-webkit-input-placeholder {
+  font-weight: bold;
+  color: #fff;
+}
+.login {
+  padding: 6px 20px;
+  border-radius: 20px;
+  background: none;
+  border: 2px solid #b393d3;
+  
+  color: #301934;
+  font-weight: bold;
+  transition: all .5s;
+  margin-top: 1em;
+}
+.login:hover {
+  background: #b393d3;
+  color: #fff;
+}
+
+</style>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+
+<header class = " headers header_color">
+
+  <details>
+    <summary></summary>
+    <nav class="menu">
+      <a href="{% url 'main_video_list' %}">Главная</a>
+      
+      {% if user.is_authenticated %}
+      <a class="login-trigger" href="{% url 'profile' %}">Мой профиль</a>
+      
+      {% else %}
+      <a class="login-trigger" href="#" data-target="#login" data-toggle="modal">Вход</a>
+        
+      {% endif %}
+      
+
+      
+
+    </nav>
+  </details> <!-- <a class="am" aria-current="page" href="{% url 'main_video_list' %}">Главная</a> -->
+          
+ 
+
+      
+</header>
+  
+
+
+{% include 'authfiles/registrate.html' %}
+{% include 'authfiles/login.html' %}
+
+
+
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+<div style = "margin-top: 20%; " >
+  <div id="heart">
+
+    <div class = " heads">
+      
+
+      <h1 class = "lite" >AniHeart</h1>
+      
+    </div>
+  </div>
+  
+</div>
+
+
+
+
+<div class = "content">
+   
+    <div class="classic_div">
+        {% block content %}
+            
+        {% endblock %}
+    </div>
+
+
+
+
+
+
+
+<!-- Footer -->
+</div>
+<style>
+  *{
+  position: relative;
+  }
+  html,body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  .content{
+    flex: 1;
+    min-height: calc(100vh - 20px);
+  }
+ 
+
+</style>
+
+
+<footer class="text-center text-white " >
+    <!-- Grid container -->
+    <!-- <div class="container p-4">
+      <section class="mb-4 ">
+        <p>
+          Благодарим вас за посещение сайта!!!<br> Сайт находится на этапе разработки и постепенно будет улучшаться<br> А поддержать нас можно по ссылке ниже, с вашей помощью скорость развитие сайта и качество предоставляемого контента увеличться<br> Приятного просмотра!
+        </p>
+        <div class="wrap" style = "margin-top:10%;margin-bottom:30%;" >
+          <a href = "https://my.qiwi.com/DANYLA-Sx91OTiPvU" >
+          <button class="button1" >Поддержать</button>
+          </a>
+        </div>
+      </section>
+      
+    </div> -->
+    
+    <div class="text-left p-4" style="background-color: rgba(0, 0, 0, 0.1);">
+      © 2023: aniheart
+      
+    </div>
+    <!-- Copyright -->
+  </footer>
+
+  <!-- Footer -->
+
+
+
+    <script type="text/javascript" src="/css/mdb.min.js"></script>
+    
+    <script type="text/javascript"></script>
+    
+    <script src="../jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="../script.js"></script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+  
+</body>
+
+</html>
+
